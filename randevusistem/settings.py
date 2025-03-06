@@ -151,4 +151,4 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 STATICSTORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-CSRF_TRUSTED_ORIGINS= ["http://127.0.0.1", "http://localhost" , "myappcode.xyz"]
+CSRF_TRUSTED_ORIGINS= ["http://127.0.0.1", "http://localhost" , "https://myappcode.xyz"]
