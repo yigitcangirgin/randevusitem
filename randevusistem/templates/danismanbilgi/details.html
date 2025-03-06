@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-2 text-center">
+            <img src="{{danisman.profile_picture.url}}" alt="" class="rounded-circle" style="max-width: 190px; max-height: 200px; ">
+        </div>
+
+        <div class="col-md-10">
+            <h5 class="fw-bold text-white">{{danisman.full_name}}</h5>
+            <p class="fs-5 text-white">{{danisman.bio}}</p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item bg-transparent text-white">
+                    <strong>Seans Ücreti:</strong> {{danisman.fee}}
+                </li>
+                <li class="list-group-item bg-transparent text-white">
+                    <strong>Yetkinlik:</strong> {{danisman.specialization}}
+                </li>
+            </ul>
+            <a href="#" class="btn btn-light mt-3 px-4 py-2 shadow">
+                Randevu Al
+            </a>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}
