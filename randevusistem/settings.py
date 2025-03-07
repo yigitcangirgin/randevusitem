@@ -152,5 +152,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 STATICSTORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 CSRF_TRUSTED_ORIGINS = [
     'https://*.railway.app',
-    'www.myappcode.xyz',  # Eğer kendi domaininizi kullanıyorsanız ekleyin
+    'https://www.myappcode.xyz',  # Eğer kendi domaininizi kullanıyorsanız ekleyin
 ]
