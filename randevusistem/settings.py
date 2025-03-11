@@ -107,9 +107,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'tr-tr'
 
-TIME_ZONE = 'UTC'
+
+TIME_ZONE = 'Europe/Istanbul' 
+
 
 USE_I18N = True
 
@@ -152,5 +154,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 STATICSTORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 CSRF_TRUSTED_ORIGINS = [
     'https://*.railway.app',
-    'https://www.myappcode.xyz',  # Eğer kendi domaininizi kullanıyorsanız ekleyin
+    'https://www.myappcode.xyz',  
 ]

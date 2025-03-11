@@ -1,0 +1,255 @@
+<style>
+    /* Genel Stiller */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f0f0f0 !important; /* Arka planı gri yapmak için */
+    color: #333333; /* Koyu gri metin */
+    font-size: 16px;
+    padding-top: 50px; /* Navbar'ın üst kısmıyla çakışmaması için */
+}
+
+/* Navbar Stili */
+.navbar {
+    background-color: #6A4C93; /* Ana renk - Mor */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.navbar .logo {
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 1em;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #FFD700; /* Altın sarısı hover */
+}
+
+.auth-buttons {
+    display: flex;
+}
+
+.auth-buttons button {
+    margin-left: 10px;
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: 0.3s;
+}
+
+.login {
+    background-color: white;
+    color: #6A4C93; /* Ana renk - Mor */
+}
+
+.register {
+    background-color: #FFD700; /* Altın sarısı */
+    color: #6A4C93;
+}
+
+.login:hover {
+    background-color: #f0f0f0;
+}
+
+.register:hover {
+    background-color: #e6c200;
+}
+
+/* Mobil Menü */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+}
+
+@media (max-width: 1024px) {
+    .navbar .logo {
+        font-size: 1.5em;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #6A4C93; /* Mor renk */
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        display: none;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-links a {
+        font-size: 1.2em;
+    }
+
+    .auth-buttons {
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    .auth-buttons button {
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .navbar .logo {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #6A4C93;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        display: none;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-links a {
+        font-size: 1.2em;
+    }
+
+    .auth-buttons {
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    .auth-buttons button {
+        margin: 5px 0;
+        padding: 10px 20px;
+    }
+}
+
+/* Randevu Kartı */
+.user_card {
+    margin-top: 120px; /* Sayfa başına boşluk */
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+/* Küçük Ekranlar için Düzenlemeler */
+@media (max-width: 320px) {
+    .user_card {
+        margin-top: 80px;
+    }
+}
+
+</style>
+<body>
+    <nav class="navbar">
+        <div class="logo">PsyCare</div>
+        <ul class="nav-links">
+            <li><a href="{% url 'pages_index' %}" class="btn btn-outline-light me-2">Ana Sayfa</a></li>
+            <li><a href="{% url 'about' %}" class="btn btn-outline-light me-2">Hakkımızda</a></li>
+            <li><a href="{% url 'danisman_index' %}" class="btn btn-outline-light me-2">Randevu Al</a></li>
+            <li><a href="{% url 'contact' %}" class="btn btn-outline-light me-2">İletişim</a></li>
+        </ul>
+
+        {% if user.is_authenticated %}
+        <div class="d-flex">
+            <a href="javascript:{document.getElementById('logout').submit()}" class="btn btn-outline-light me-2">{{user.username}} Çıkış yap</a>
+            <form action="{% url 'logout' %}" method="POST" id="logout">
+                {% csrf_token %}
+                <input type="hidden">
+            </form>
+        </div>
+        
+        {% else %}
+        
+        <div class="d-flex">
+            <a href="{% url 'login' %}" class="btn btn-outline-light me-2">Giriş Yap</a>
+            <a href="{% url 'register' %}" class="btn btn-outline-light me-2">Kayıt Ol</a>
+        </div>
+        {% endif %}
+        
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>

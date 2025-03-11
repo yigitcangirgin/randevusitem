@@ -3,17 +3,19 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
 }
 
 body {
-    background-color: #51ff00;
+    background-color: #f0f0f0 !important; /* Arka planı gri yapmak için */
+    color: #333333; /* Koyu gri metin */
     font-size: 16px;
+    padding-top: 50px; /* Navbar'ın üst kısmıyla çakışmaması için */
 }
 
 /* Navbar Stili */
 .navbar {
-    background-color: #007bff;
+    background-color: #6A4C93; /* Ana renk - Mor */
     color: white;
     display: flex;
     justify-content: space-between;
@@ -24,11 +26,11 @@ body {
     top: 0;
     left: 0;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000; /* Navbar'ın en üstte olmasını sağlar */
+    z-index: 1000;
 }
 
 .navbar .logo {
-    font-size: 1.5em;
+    font-size: 1.8em;
     font-weight: bold;
 }
 
@@ -49,7 +51,7 @@ body {
 }
 
 .nav-links a:hover {
-    color: #ffd700;
+    color: #FFD700; /* Altın sarısı hover */
 }
 
 .auth-buttons {
@@ -68,12 +70,12 @@ body {
 
 .login {
     background-color: white;
-    color: #007bff;
+    color: #6A4C93; /* Ana renk - Mor */
 }
 
 .register {
-    background-color: #ffd700;
-    color: #007bff;
+    background-color: #FFD700; /* Altın sarısı */
+    color: #6A4C93;
 }
 
 .login:hover {
@@ -100,67 +102,14 @@ body {
 
 @media (max-width: 1024px) {
     .navbar .logo {
-        font-size: 1.2em; /* Tablet ve altı için logoyu küçültme */
+        font-size: 1.5em;
     }
 
     .nav-links {
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-color: #007bff;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        text-align: center;
-        padding: 10px 0;
-        display: none;
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .nav-links li {
-        margin: 10px 0;
-    }
-
-    .menu-toggle {
-        display: flex;
-    }
-
-    .nav-links a {
-        font-size: 1.2em; /* Mobildeki linklerin boyutunu büyütme */
-    }
-
-    .auth-buttons {
-        flex-direction: column;
-        margin-top: 10px;
-    }
-
-    .auth-buttons button {
-        margin: 5px 0;
-    }
-}
-
-@media (max-width: 768px) {
-    /* Mobile-first approach: Navbar'daki elemanları dikey düzenle */
-    .navbar {
-        flex-direction: column;
-        justify-content: center;
-        padding: 10px;
-    }
-
-    .navbar .logo {
-        font-size: 1.2em; /* Mobilde logoyu küçültme */
-        margin-bottom: 10px;
-    }
-
-    .nav-links {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: #007bff;
+        background-color: #6A4C93; /* Mor renk */
         position: absolute;
         top: 60px;
         left: 0;
@@ -186,7 +135,58 @@ body {
         font-size: 1.2em;
     }
 
-    /* Mobil butonlar */
+    .auth-buttons {
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    .auth-buttons button {
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .navbar .logo {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #6A4C93;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        display: none;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-links a {
+        font-size: 1.2em;
+    }
+
     .auth-buttons {
         flex-direction: column;
         margin-top: 10px;
@@ -198,40 +198,58 @@ body {
     }
 }
 
-@media (max-width: 480px) {
-    /* Küçük telefonlar için ayarlar */
-    .navbar {
-        padding: 10px;
-    }
-
-    .navbar .logo {
-        font-size: 1.1em; /* Logoyu daha da küçültme */
-        margin-bottom: 10px;
-    }
-
-    .nav-links a {
-        font-size: 1.1em; /* Linklerin boyutunu daha da küçültme */
-    }
-
-    .auth-buttons button {
-        padding: 8px 15px;
-    }
-}
-
+/* Randevu Kartı */
 .user_card {
-    margin-top: 100px; /* Üst boşluk daha küçük yapıldı */
+    margin-top: 120px; /* Sayfa başına boşluk */
     max-width: 400px;
     margin-left: auto;
     margin-right: auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: #ffffff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    background-color: #ffffff;
 }
 
-/* Small adjustments for small devices */
+/* Küçük Ekranlar için Düzenlemeler */
 @media (max-width: 320px) {
     .user_card {
-        margin-top: 80px; /* Daha küçük ekranlarda daha az boşluk */
+        margin-top: 80px;
     }
+}
+footer {
+    background-color: #6A4C93; /* Mor renk arka plan */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 14px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #FFD700; /* Altın sarısı renk hover */
+}
+
+footer .social-icons {
+    margin-top: 10px;
+}
+
+footer .social-icons a {
+    margin: 0 10px;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+footer .social-icons a:hover {
+    color: #FFD700; /* Altın sarısı hover */
 }

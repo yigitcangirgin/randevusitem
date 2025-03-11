@@ -1,27 +1,85 @@
 {% extends 'layout.html' %}
 {% block content %}
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-2 text-center">
-            <img src="{{danisman.profile_picture.url}}" alt="" class="rounded-circle" style="max-width: 190px; max-height: 200px; ">
+{% load static %}
+<style>
+  .btn-custom {
+      background-color: #6A4C93; /* Mor arka plan */
+      color: white;
+      padding: 12px 30px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      display: inline-block;
+      transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .btn-custom:hover {
+      background-color: #FFD700; 
+      color: #333333; 
+  }
+
+  .btn-custom:active {
+      background-color: #4B2A83;
+  }
+
+  .image-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .image-container {
+    margin-bottom: 20px;
+  }
+
+  .image {
+    width: 100%; 
+    max-width: 400px;
+    height: auto; 
+    border-radius: 10px;
+  }
+</style>
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+<div class="container">
+  <div class="container-inner">
+    <div class="main-content">
+      <div class="main-headings" id="main-headings-js">
+        <div class="heading">
+          <h3 id="heading1">Psg.{{danisman.full_name}}</h3>
         </div>
 
-        <div class="col-md-10">
-            <h5 class="fw-bold text-white">{{danisman.full_name}}</h5>
-            <p class="fs-5 text-white">{{danisman.bio}}</p>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item bg-transparent text-white">
-                    <strong>Seans Ücreti:</strong> {{danisman.fee}}
-                </li>
-                <li class="list-group-item bg-transparent text-white">
-                    <strong>Yetkinlik:</strong> {{danisman.specialization}}
-                </li>
-            </ul>
-            <a href="#" class="btn btn-light mt-3 px-4 py-2 shadow">
-                Randevu Al
-            </a>
+        <div class="short-bio mt-5">
+          <p>{{danisman.specialization}}</p>
         </div>
-        
+
+        <a href="#" class="link" onclick="readMore()">Daha fazla</a>
+      </div>
+
+      <div class="more-info mt-1" id="more-info-js">
+        <p>{{danisman.bio}}</p>
+      </div>
     </div>
+    <div class="image-wrapper">
+      <div class="image-container">
+        <img class="image" src="{{danisman.profile_picture.url}}" alt="image of a young woman.">
+      </div>
+      <a href="{% url 'danisman_randevu' danisman.id %}" class="btn-custom mb-5">Randevu Al</a>
+    </div>
+  </div>
 </div>
+
+<script>
+  function readMore() {
+      var expandInfo = document.getElementById("more-info-js");
+      var mainHeadings = document.getElementById("main-headings-js");
+
+      mainHeadings.style.transform = "scale(0.7)";
+      expandInfo.style.height = "400px";
+  }
+</script>
 {% endblock %}

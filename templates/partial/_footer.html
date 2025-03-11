@@ -1,0 +1,50 @@
+{% load static %}
+<style>
+    footer {
+        background-color: #6A4C93; /* Mor renk arka plan */
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+        margin-top: 30px;
+        font-size: 14px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        left: 0;
+    }
+    
+    footer a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s;
+    }
+    
+    footer a:hover {
+        color: #FFD700; /* Altın sarısı renk hover */
+    }
+    
+    footer .social-icons {
+        margin-top: 10px;
+    }
+    
+    footer .social-icons a {
+        margin: 0 10px;
+        font-size: 18px;
+        transition: color 0.3s;
+    }
+    
+    footer .social-icons a:hover {
+        color: #FFD700; /* Altın sarısı hover */
+    }
+</style>
+
+<footer>
+    <p>&copy; 2025 Psycare. Tüm hakları saklıdır.</p>
+    <p><a href="#">Gizlilik Politikası</a> | <a href="#">Kullanım Şartları</a></p>
+    <div class="social-icons">
+        <a href="#" class="facebook" title="Facebook">F</a>
+        <a href="#" class="twitter" title="Twitter">T</a>
+        <a href="#" class="linkedin" title="LinkedIn">L</a>
+    </div>
+</footer>

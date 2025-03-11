@@ -1,38 +1,46 @@
 {% extends 'layout.html' %}
 {% block content %}
 {% load static %}
+
 {% for psikolog in danisman %}
-    <div class="container">
+    <div class="container" style="background-color: #F4F4F9; padding: 30px; border-radius: 10px;">
         <hr/>
-        <span>
-            <span class="col-lg-3">
-                <img class="projectimg rounded-circle" src="{{psikolog.profile_picture.url}}" alt="#"style="max-height: 300px; max-width: 200px;">
-            </span>
-            <span class="col-lg-5" style="text-align:left">
-                <h3><a href="{% url 'danisman_details' psikolog.id %}" 
-                    class="text-decoration-none text-white fw-bold"
-                    style="transition: color 0.3s ease; color: #FFFFFF;"
-                    onmouseover="this.style.color='#C3A2F5'"
-                    onmouseout="this.style.color='#FFFFFF'">
-                    {{psikolog.full_name}}
-                 </a>
-                 </h3>
-                <h3>Uzmanlık: <span class="label" style="background-color:#FA8072">{{psikolog.specialization}}</span>
+        <div class="row">
+            <div class="col-lg-3">
+                <img class="projectimg rounded-circle" src="{{ psikolog.profile_picture.url }}" alt="#" style="max-height: 300px; max-width: 200px;">
+            </div>
+            <div class="col-lg-5" style="text-align:left;">
+                <h3>
+                    <a href="{% url 'danisman_details' psikolog.id %}"
+                       class="text-decoration-none text-dark fw-bold"
+                       style="transition: color 0.3s ease; color: #333333;"
+                       onmouseover="this.style.color='#8A2BE2'"
+                       onmouseout="this.style.color='#333333'">
+                        {{ psikolog.full_name }}
+                    </a>
                 </h3>
-                <h3>Seans Ücreti: <span class="label" style="background-color:#8A2BE2">{{psikolog.fee}}</span>
-                </h3> 
-            </span>
-            <span class="col-lg-4" style="text-align:left">
+                <h4>Uzmanlık: <span class="label" style="background-color:#E6A7B9">{{ psikolog.specialization }}</span></h4>
+                <h4>Seans Ücreti: <span class="label" style="background-color:#A9B6D4">{{ psikolog.fee }}</span></h4>
+            </div>
+            <div class="col-lg-4" style="text-align:left;">
                 <br/><br/>
-                <h3>Deneyim: 2 Yıl</h3>
-            </span>
-        </span>
-  
+                <h4>Deneyim: <span style="font-weight: normal; color: #555;">2 Yıl</span></h4>
+                <h5>Uygunluk Saatleri:</h5>
+                <ul class="availability-list">
+                    {% for uygunluk in psikolog.availabilities.all %}
+                        <li class="availability-item">
+                            <span class="day-of-week">{{ uygunluk.day_of_week }}:</span>
+                            <span class="time-range">
+                                {{ uygunluk.start_time|date:"H:i" }} - {{ uygunluk.end_time|date:"H:i" }}
+                            </span>
+                        </li>
+                    {% empty %}
+                        <li>Bu psikolog için uygunluk saatleri belirlenmemiş.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
     </div>
-  
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    </body>
-  </html>
 {% endfor %}
+
 {% endblock %}

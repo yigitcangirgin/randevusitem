@@ -1,7 +1,9 @@
 {% extends 'layout.html' %}
+
 {% block content %}
 <style>
     @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
+
 * {
   margin: 0;
   padding: 0;
@@ -21,11 +23,10 @@ body {
   font-size: 12px;
   line-height: 30px;
   color: #777;
-  background: #6A4C93;
 }
 
 .container {
-  max-width: 400px;
+  max-width: 600px;
   width: 100%;
   margin: 0 auto;
   position: relative;
@@ -41,10 +42,11 @@ body {
 }
 
 #contact {
-  background: #F9F9F9;
+  background: #F4F4F9;
   padding: 25px;
-  margin: 150px 0;
+  margin: 100px 0;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  border: 1px solid #E6A7B9;
 }
 
 #contact h3 {
@@ -52,6 +54,7 @@ body {
   font-size: 30px;
   font-weight: 300;
   margin-bottom: 10px;
+  color: #6A4C93; /* Koyu mor renk */
 }
 
 #contact h4 {
@@ -59,6 +62,7 @@ body {
   display: block;
   font-size: 13px;
   font-weight: 400;
+  color: #6A4C93; /* Koyu mor renk */
 }
 
 fieldset {
@@ -79,6 +83,7 @@ fieldset {
   background: #FFF;
   margin: 0 0 5px;
   padding: 10px;
+  color: #333333; /* Koyu gri metin rengi */
 }
 
 #contact input[type="text"]:hover,
@@ -86,8 +91,6 @@ fieldset {
 #contact input[type="tel"]:hover,
 #contact input[type="url"]:hover,
 #contact textarea:hover {
-  -webkit-transition: border-color 0.3s ease-in-out;
-  -moz-transition: border-color 0.3s ease-in-out;
   transition: border-color 0.3s ease-in-out;
   border: 1px solid #aaa;
 }
@@ -102,7 +105,7 @@ fieldset {
   cursor: pointer;
   width: 100%;
   border: none;
-  background: #4CAF50;
+  background: #8A2BE2; /* Mor tonu */
   color: #FFF;
   margin: 0 0 5px;
   padding: 10px;
@@ -110,10 +113,8 @@ fieldset {
 }
 
 #contact button[type="submit"]:hover {
-  background: #43A047;
-  -webkit-transition: background 0.3s ease-in-out;
-  -moz-transition: background 0.3s ease-in-out;
-  transition: background-color 0.3s ease-in-out;
+  background: #6A4C93; /* Koyu mor rengi */
+  transition: background 0.3s ease-in-out;
 }
 
 #contact button[type="submit"]:active {
@@ -145,11 +146,63 @@ fieldset {
 :-ms-input-placeholder {
   color: #888;
 }
+
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 768px) {
+  .container {
+    max-width: 90%;
+    margin: 20px;
+  }
+
+  #contact h3 {
+    font-size: 26px;
+  }
+
+  #contact h4 {
+    font-size: 12px;
+  }
+
+  #contact input[type="text"],
+  #contact input[type="email"],
+  #contact input[type="tel"],
+  #contact input[type="url"],
+  #contact textarea,
+  #contact button[type="submit"] {
+    font-size: 14px;
+    padding: 12px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    max-width: 100%;
+    margin: 10px;
+  }
+
+  #contact h3 {
+    font-size: 22px;
+  }
+
+  #contact h4 {
+    font-size: 11px;
+  }
+
+  #contact input[type="text"],
+  #contact input[type="email"],
+  #contact input[type="tel"],
+  #contact input[type="url"],
+  #contact textarea,
+  #contact button[type="submit"] {
+    font-size: 16px;
+    padding: 14px;
+  }
+}
 </style>
-<div class="container">  
+
+<div class="container py-5">  
     <form id="contact" action="" method="POST">
       {% csrf_token %}
-      <h3>Psycare İletişim</h3>
+      <h3>PsyCare İletişim</h3>
       <h4>İletişim Bilgilerinizi Yazınız</h4>
       <fieldset>
         <input placeholder="Adınız" type="text" tabindex="1" name="firstname" required autofocus>
@@ -164,8 +217,9 @@ fieldset {
         <textarea placeholder="Mesajınızı Buraya Yazınız..." tabindex="5" name="message" required></textarea>
       </fieldset>
       <fieldset>
-        <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+        <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Gönder</button>
       </fieldset>
     </form>
-  </div>
+</div>
+
 {% endblock %}
