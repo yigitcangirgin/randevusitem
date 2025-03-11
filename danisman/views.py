@@ -36,11 +36,10 @@ def danisman_randevu(request , danisman_id):
         phone = request.POST['phone']
         date = request.POST.get('date', '') 
         comment = request.POST['comment']
-        
-        send_mail(first_name, 
-          last_name, 
-          phone, 
-          settings.EMAIL_HOST_USER,  # 'settings' burada doğru olmalı
+        message = f"Ad: {first_name}\nSoyad: {last_name}\nTelefon Numarası: {phone}\nYorum:{comment} "
+        send_mail("Randevu",  
+          message, 
+          settings.EMAIL_HOST_USER, 
           ['aslanmert451998@gmail.com'],
           fail_silently=False)
     return render(request , 'danismanbilgi/danisman_randevu.html' , context)
