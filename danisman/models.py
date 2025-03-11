@@ -1,8 +1,6 @@
 from django.db import models
 from django.utils import timezone
-import locale
-# Create your models here.
-locale.setlocale(locale.LC_TIME, 'tr_TR.UTF-8')
+
 
 class Danisman(models.Model):
     title = models.CharField(max_length=100)  # Danışmanın unvanı (ör. Dr., Prof., vb.)
